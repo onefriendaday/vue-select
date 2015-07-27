@@ -1,0 +1,19 @@
+<div class="select" v-class="select--invalid: isInvalid">
+	<div class="select__input">
+		<input v-if="showSearch" type="text" 
+			v-model="term" 
+			v-on="keydown:choose($event) | key 13, keydown:goUp($event) | key 38, keydown:goDown($event) | key 40">
+	</div>
+	<a class="select__btn ellipsis" href="#" v-on="click: open($event)">{{ currentSelection.name }}</a>
+	<div class="select__dropdown" v-show="dropdownOpen">
+		<ul>
+			<li v-repeat="option: filteredOptions">
+				<a href="#" 
+					v-on="click: setValue(option, $event)" 
+					v-class="select__highlight: option.value == currentValue">
+					{{ option.name }}
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
