@@ -63,12 +63,6 @@ module.exports = {
                 this.setOptions(global[this.globalKey])
             }
         })
-
-        this.$watch('localKey', function () {
-            if (this.localKey.length > 0) {
-                this.setOptions(local[this.localKey])
-            }
-        })
     },
     ready: function() {
         if (!this.currentSelection.name) {
