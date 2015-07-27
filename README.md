@@ -18,14 +18,13 @@ new Vue({
 	components: {
 		select: require('./vue-select')
 	}
-}
 })
 ```
 
 ```
 <div v-component="select" 
 		v-ref="selectLang" 
-		v-with="defaultText: 'Choose Your Language', " 
+		v-with="defaultText: 'Choose Your Language'" 
 		v-events="change: setLanguage"></div>
 ```
 
