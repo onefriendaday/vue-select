@@ -11,21 +11,17 @@ Vue JS selectbox replacement with search field. Tries to imitate the functionali
 # How to use
 ```
 new Vue({
-	...
-	created: function() {
-		this.$.selectLang.setOptions(['English', 'German'])
-	},
+	el: 'body',
 	components: {
-		select: require('./vue-select')
+		select: require('vue-select')
 	}
 })
 ```
 
 ```
 <div v-component="select" 
-		v-ref="selectLang" 
-		v-with="defaultText: 'Choose Your Language'" 
-		v-events="change: setLanguage"></div>
+        v-ref="selectLang" 
+        v-with="optionsFromParent: {w: 'Woman', m: 'Men'}"></div>
 ```
 
 # Todo

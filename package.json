@@ -7,13 +7,11 @@
   "keywords": [
     "vue.js"
   ],
+  "browserify": { "transform": [ "partialify" ] },
   "main": "select.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/onefriendaday/vue-select.git"
   },
-  "bugs": "https://github.com/onefriendaday/vue-select/issues",
-  "dependencies": {
-    "vue": "^0.12"
-  }
+  "bugs": "https://github.com/onefriendaday/vue-select/issues"
 }
