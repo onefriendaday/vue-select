@@ -6,7 +6,7 @@ module.exports = {
     data: function() {
         return {
             selectOptions: [],
-            optionsFromParent: [],
+            optionsFromParent: null,
             url: '',
             path: '',
             globalKey: '',
@@ -63,6 +63,18 @@ module.exports = {
                 this.setOptions(global[this.globalKey])
             }
         })
+
+        this.$watch('localKey', function () {
+            if (this.localKey.length > 0) {
+                this.setOptions(local[this.localKey])
+            }
+        })
+
+        this.$watch('optionsFromParent', function () {
+            if (this.optionsFromParent !== null) {
+                this.setOptions(this.optionsFromParent)
+            }
+        })
     },
     ready: function() {
         if (!this.currentSelection.name) {
@@ -106,16 +118,20 @@ module.exports = {
                 }
             } else {
                 for (var i = 0; i < options.length; i++) {
-                    opts.push({value: options[i][this.map.value], name: options[i][this.map.name], params: options[i]})
+                    opts.push({value: options[i][this.map.value], name: options[i][this.map.name], params: options[i], index: i})
                 }
             }
 
             this.selectOptions = opts
         },
+        setOption: function(option) {
+            this.currentSelection = option
+            this.currentValue = option.value
+        },
         setValueByKey: function(key) {
             for (var i = 0; i < this.selectOptions.length; i++) {
                 if (this.selectOptions[i].value == key) {
-                    this.currentSelection = this.selectOptions[i]
+                    this.setOption(this.selectOptions[i])
 
                     if (this.modelToUpdate) {
                         this.$parent.$set(this.modelToUpdate, this.currentSelection.value)
@@ -126,7 +142,7 @@ module.exports = {
         setValue: function(option, e) {
             e.preventDefault()
 
-            this.currentSelection = option
+            this.setOption(option)
             this.dropdownOpen = false
 
             if (this.enableSearch) {
