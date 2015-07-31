@@ -1,6 +1,6 @@
 {
   "name": "vue-select",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Alexander Feiglstorfer <delooks@gmail.com>",
   "license": "MIT",
   "description": "A selectbox replacement with search field as a vue mixin",
