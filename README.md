@@ -20,8 +20,20 @@ new Vue({
 
 ```
 <div v-component="select" 
-        v-ref="selectLang" 
-        v-with="optionsFromParent: {w: 'Woman', m: 'Men'}"></div>
+     v-ref="selectLang" 
+     v-with="optionsFromParent: {w: 'Woman', m: 'Men'}"></div>
+```
+
+## Example how to use with vue-validator
+```
+<input type="hidden" v-model="form.country" v-validate="required" lazy>
+<div v-component="select" 
+     v-ref="formCountry" 
+     v-with="isInvalid: validation.form.country.invalid, modelToUpdate: 'form.country' globalKey: 'countries', preselect: 'AT'"></div>
+
+<script type="text/javascript">
+	var global = {countries: {'AT': 'Austria', 'US': 'United States'}}
+</script>
 ```
 
 # Todo
